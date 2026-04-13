@@ -8,7 +8,6 @@ const getHealthData = () => {
 };
 
 const scheduleConsultation = async (payload) => {
-  console.log("Schedule Consultation payload:", payload);
   const emailStatus = await sendScheduleConsultationMail(payload);
 
   return {

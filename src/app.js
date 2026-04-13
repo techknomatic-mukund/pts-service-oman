@@ -1,9 +1,14 @@
 const express = require("express");
 const cors = require("cors");
+const config = require("./config/config");
 const apiRoutes = require("./routes/api.routes");
 const errorMiddleware = require("./middlewares/error.middleware");
 
 const app = express();
+
+if (config.trustProxy) {
+  app.set("trust proxy", 1);
+}
 
 const allowedOrigin = process.env.FRONTEND_URL || "http://localhost:3000";
 

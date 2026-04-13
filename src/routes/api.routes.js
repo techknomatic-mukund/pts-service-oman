@@ -4,11 +4,22 @@ const {
   scheduleConsultationRequest,
   scheduleConsultationEmailOnly,
 } = require("../controllers/api.controller");
+const {
+  scheduleConsultationRateLimiter,
+} = require("../middlewares/schedule-consultation-rate-limit.middleware");
 
 const router = express.Router();
 
 router.get("/health", getApiHealth);
-router.post("/schedule-consultation", scheduleConsultationRequest);
-router.post("/schedule-consultation-email", scheduleConsultationEmailOnly);
+router.post(
+  "/schedule-consultation",
+  scheduleConsultationRateLimiter,
+  scheduleConsultationRequest
+);
+router.post(
+  "/schedule-consultation-email",
+  scheduleConsultationRateLimiter,
+  scheduleConsultationEmailOnly
+);
 
 module.exports = router;
