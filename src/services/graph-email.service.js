@@ -128,7 +128,7 @@ const sendScheduleConsultationMail = async (payload) => {
   const accessToken = await getGraphAccessToken();
 
   const emailBody = [
-    "New Schedule Consultation request received:",
+    "New Consultation request received:",
     "",
     `Name: ${payload.name || ""}`,
     `Company: ${payload.company || ""}`,
@@ -151,8 +151,10 @@ const sendScheduleConsultationMail = async (payload) => {
   const customerBody = [
     `Hi ${payload.name || "there"},`,
     "",
+    "Greetings!!",
+    "",
     "Thank you for scheduling a consultation with us.",
-    "Please find the attached PDF document.",
+    "Please find attached the company profile.",
     "",
     "Best regards,",
     "PTS Team",
